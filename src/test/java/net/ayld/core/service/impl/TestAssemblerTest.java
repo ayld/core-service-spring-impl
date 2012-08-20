@@ -1,15 +1,12 @@
 package net.ayld.core.service.impl;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 
 import net.ayld.core.domain.TestEntity;
 import net.ayld.core.dto.TestDto;
@@ -55,7 +52,9 @@ public class TestAssemblerTest {
 		}
 		final List<TestDto> resultArrayList = assembler.toDtos(entitiesArrayList);
 		
-		assertEquals(resultArrayList instanceof ArrayList, true);
+		assertTrue(resultArrayList instanceof ArrayList);
+		
+		checkContents(resultArrayList);
 		
 		// test LinkedList compatibility
 		final List<TestEntity> entitiesLinkedList = new LinkedList<TestEntity>();
@@ -65,7 +64,9 @@ public class TestAssemblerTest {
 		}
 		final List<TestDto> resultLinkedList = assembler.toDtos(entitiesLinkedList);
 		
-		assertEquals(resultLinkedList instanceof LinkedList, true);
+		assertTrue(resultLinkedList instanceof LinkedList);
+		
+		checkContents(resultLinkedList);
 		
 		// test UnsupportedCollectionException
 		final List<TestEntity> entitiesUnsupportedList = new UnsupportedList<TestEntity>();
@@ -84,6 +85,17 @@ public class TestAssemblerTest {
 			fail();
 		}
 	}
+
+	private void checkContents(final List<TestDto> resultList) {
+		Integer count = 0;
+		for (TestDto dto : resultList) {
+			
+			assertEquals(dto.getId(), count);
+			assertEquals(dto.getName(), EXPECTED_NAME + count);
+			
+			count++;
+		}
+	}
 	
 	private TestEntity newTestEntity(int id, String name) {
 		final TestEntity result = new TestEntity();
@@ -99,123 +111,5 @@ public class TestAssemblerTest {
 		result.setName(name);
 		
 		return result;
-	}
-	
-	private class UnsupportedList<T extends Serializable> implements List<T> {
-
-		@Override
-		public boolean add(T e) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public void add(int index, T element) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean addAll(Collection<? extends T> c) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean addAll(int index, Collection<? extends T> c) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public void clear() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean contains(Object o) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean containsAll(Collection<?> c) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public T get(int index) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public int indexOf(Object o) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean isEmpty() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public Iterator<T> iterator() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public int lastIndexOf(Object o) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public ListIterator<T> listIterator() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public ListIterator<T> listIterator(int index) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean remove(Object o) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public T remove(int index) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean removeAll(Collection<?> c) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public boolean retainAll(Collection<?> c) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public T set(int index, T element) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public int size() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public List<T> subList(int fromIndex, int toIndex) {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public Object[] toArray() {
-			throw new UnsupportedOperationException();
-		}
-
-		@Override
-		public <A> A[] toArray(A[] a) {
-			throw new UnsupportedOperationException();
-		}
 	}
 }

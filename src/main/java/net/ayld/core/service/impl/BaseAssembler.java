@@ -1,6 +1,8 @@
 package net.ayld.core.service.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -79,6 +81,24 @@ public abstract class BaseAssembler<D extends BaseDto<I>, E extends BaseEntity<I
 		for (D dto : dtos) {
 			
 			result.add(toEntity(dto));
+		}
+		return result;
+	}
+	
+	public List<E> typeUnawareToEntities(Collection<D> dtos) {
+		final List<E> result = new ArrayList<E>(dtos.size());
+		for (D dto : dtos) {
+			
+			result.add(toEntity(dto));
+		}
+		return result;
+	}
+	
+	public List<D> typeUnawareToDtos(Collection<E> entities) {
+		final List<D> result = new ArrayList<D>(entities.size());
+		for (E entity : entities) {
+			
+			result.add(toDto(entity));
 		}
 		return result;
 	}

@@ -9,6 +9,7 @@ import java.util.Set;
 
 import net.ayld.core.domain.BaseEntity;
 import net.ayld.core.dto.BaseDto;
+import net.ayld.core.exception.UnsupportedCollectionException;
 import net.ayld.core.service.impl.factory.ArrayListFactory;
 import net.ayld.core.service.impl.factory.HashSetFactory;
 import net.ayld.core.service.impl.factory.LinkedListFactory;
@@ -69,7 +70,7 @@ public class CollectionFactoryManager<D extends BaseDto<I>, E extends BaseEntity
 		
 		if (!SupportedLists.isSupported(c)) {
 			
-			throw new IllegalArgumentException("Lists of type: " + c + " are currently not supported.");
+			throw new UnsupportedCollectionException("Lists of type: " + c + " are currently not supported.");
 		}
 		return dtoListFactories.get(c).newInstance();
 	}
@@ -78,7 +79,7 @@ public class CollectionFactoryManager<D extends BaseDto<I>, E extends BaseEntity
 		
 		if (!SupportedLists.isSupported(c)) {
 			
-			throw new IllegalArgumentException("Lists of type: " + c + " are currently not supported.");
+			throw new UnsupportedCollectionException("Lists of type: " + c + " are currently not supported.");
 		}
 		return entityListFactories.get(c).newInstance();
 	}
@@ -87,7 +88,7 @@ public class CollectionFactoryManager<D extends BaseDto<I>, E extends BaseEntity
 		
 		if (!SupportedSets.isSupported(c)) {
 			
-			throw new IllegalArgumentException("Sets of type: " + c + " are currently not supported.");
+			throw new UnsupportedCollectionException("Sets of type: " + c + " are currently not supported.");
 		}
 		return dtoSetFactories.get(c).newInstance();
 	}
@@ -96,7 +97,7 @@ public class CollectionFactoryManager<D extends BaseDto<I>, E extends BaseEntity
 		
 		if (!SupportedSets.isSupported(c)) {
 			
-			throw new IllegalArgumentException("Sets of type: " + c + " are currently not supported.");
+			throw new UnsupportedCollectionException("Sets of type: " + c + " are currently not supported.");
 		}
 		return entitySetFactories.get(c).newInstance();
 	}

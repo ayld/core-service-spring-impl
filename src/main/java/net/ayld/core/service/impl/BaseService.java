@@ -5,7 +5,7 @@ import java.io.Serializable;
 import net.ayld.core.dto.BaseDto;
 import net.ayld.core.service.CrudService;
 
-public abstract class BaseService<D extends BaseDto<I>, I extends Serializable> implements CrudService<D, I>, Serializable{
+public abstract class BaseService<D extends BaseDto<I>, I extends Serializable> implements CrudService<D, I> {
 
 	@Override
 	public D read(I id) {
@@ -36,6 +36,4 @@ public abstract class BaseService<D extends BaseDto<I>, I extends Serializable> 
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Not implmented yet.");
 	}
-	
-	private static final long serialVersionUID = 1L;
 }

@@ -11,7 +11,7 @@ import net.ayld.core.dto.BaseDto;
 import net.ayld.core.service.Assembler;
 import net.ayld.core.service.impl.factory.manager.CollectionFactoryManager;
 
-public abstract class BaseAssembler<D extends BaseDto<I>, E extends BaseEntity<I>, I extends Serializable> implements Assembler<D, E, I>, Serializable{
+public abstract class BaseAssembler<D extends BaseDto<I>, E extends BaseEntity<I>, I extends Serializable> implements Assembler<D, E, I> {
 
 	private final CollectionFactoryManager<D, E, I> collectionFactoryManager = new CollectionFactoryManager<D, E, I>();
 	

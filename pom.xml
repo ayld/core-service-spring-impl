@@ -30,6 +30,12 @@
 		
 		<dependency>
 			<groupId>net.ayld.core</groupId>
+			<artifactId>core-persistance</artifactId>
+			<version>0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.ayld.core</groupId>
 			<artifactId>core-dto-impl</artifactId>
 			<version>0.1</version>
 		</dependency>

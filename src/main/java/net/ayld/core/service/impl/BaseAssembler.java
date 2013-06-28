@@ -105,6 +105,4 @@ public abstract class BaseAssembler<D extends BaseDto<I>, E extends BaseEntity<I
 	
 	protected abstract D makeDto(E entity);
 	protected abstract E makeEntity(D dto);
-	
-	private static final long serialVersionUID = 1L;
 }

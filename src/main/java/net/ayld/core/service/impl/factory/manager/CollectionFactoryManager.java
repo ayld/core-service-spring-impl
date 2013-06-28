@@ -67,38 +67,34 @@ public class CollectionFactoryManager<D extends BaseDto<I>, E extends BaseEntity
 	}
 
 	public List<D> newDtoList(Class c) {
-		
 		if (!SupportedLists.isSupported(c)) {
-			
 			throw new UnsupportedCollectionException("Lists of type: " + c + " are currently not supported.");
 		}
+		
 		return dtoListFactories.get(c).newInstance();
 	}
 	
 	public List<E> newEntityList(Class c) {
-		
 		if (!SupportedLists.isSupported(c)) {
-			
 			throw new UnsupportedCollectionException("Lists of type: " + c + " are currently not supported.");
 		}
+		
 		return entityListFactories.get(c).newInstance();
 	}
 	
 	public Set<D> newDtoSet(Class c) {
-		
 		if (!SupportedSets.isSupported(c)) {
-			
 			throw new UnsupportedCollectionException("Sets of type: " + c + " are currently not supported.");
 		}
+		
 		return dtoSetFactories.get(c).newInstance();
 	}
 	
 	public Set<E> newEntitySet(Class c) {
-		
 		if (!SupportedSets.isSupported(c)) {
-			
 			throw new UnsupportedCollectionException("Sets of type: " + c + " are currently not supported.");
 		}
+		
 		return entitySetFactories.get(c).newInstance();
 	}
 }

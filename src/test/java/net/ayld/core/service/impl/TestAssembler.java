@@ -20,6 +20,4 @@ public class TestAssembler extends BaseAssembler<TestDto, TestEntity, Integer>{
 		
 		return result;
 	}
-	
-	private static final long serialVersionUID = 1L;
 }
